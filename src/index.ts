@@ -8,6 +8,16 @@ app.use("/favicon.ico", serveStatic({ path: "./favicon.ico" }));
 app.get("/", (c) => {
   return c.text("Hello Hono!");
 });
+
+// API
+app.get("/api/hello", (c) => {
+  return c.json({
+    ok: true,
+    message: "Hello Hono!",
+  });
+});
+
+// fallback
 app.get("*", serveStatic({ path: "./static/fallback.txt" }));
 
 export default {
